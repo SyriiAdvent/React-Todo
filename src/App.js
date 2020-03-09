@@ -49,7 +49,9 @@ class App extends React.Component {
   }
 
   clearFinished = e => {
-
+    this.setState({
+      toData: []
+    })
   }
 
   
@@ -61,6 +63,7 @@ class App extends React.Component {
         {console.log(this.state.toData)}
         <TodoList toData={this.state.toData} toggleDone={this.toggleDone}/>
         <TodoForm handleSubmit={this.handleSubmit} addItem={this.addItem}/>
+        <button onClick={this.clearFinished} >DELETE ALL</button>
       </div>
     );
   }
