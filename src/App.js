@@ -5,7 +5,9 @@ import TodoList from './components/TodoList';
 
 
 
-localStorage.setItem('toData', toData)
+localStorage.setItem('toData', JSON.stringify(toData))
+
+// console.log(localStorage.getItem('toData'))
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -15,8 +17,8 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      //  toData: localStorage.getItem('toData')
-       toData: toData
+       toData: JSON.parse(localStorage.getItem('toData'))
+      //  toData: toData
     }
   }
 
@@ -56,6 +58,7 @@ class App extends React.Component {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
+        {console.log(this.state.toData)}
         <TodoList toData={this.state.toData} toggleDone={this.toggleDone}/>
         <TodoForm handleSubmit={this.handleSubmit} addItem={this.addItem}/>
       </div>
